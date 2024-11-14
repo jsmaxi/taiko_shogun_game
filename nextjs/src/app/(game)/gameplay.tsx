@@ -9,13 +9,18 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import logo from "../../../images/shogun_japan.png";
 import { usePathname } from "next/navigation";
+import { CardHeader, CardTitle } from "@/components/ui/card";
 import { CustomConnectButton } from "../../components/connectButton/CustomConnectButton";
+import { useAccount } from "wagmi";
+import { getTargetNetworks } from "../../../utils/networks";
 
 export default function Gameplay({ children }: { children: ReactNode }) {
   const year = new Date().getFullYear();
   const [route, setRoute] = useState("");
   const pathname = usePathname();
   const [isStoryOpen, setIsStoryOpen] = useState(false);
+  const { address: connectedAddress, chain } = useAccount();
+  const allowedNetworks = getTargetNetworks();
 
   useEffect(() => {
     setRoute(pathname);
@@ -116,7 +121,13 @@ export default function Gameplay({ children }: { children: ReactNode }) {
             <CustomConnectButton />
           </header>
 
-          {children}
+          {connectedAddress && chain && allowedNetworks.map((n) => n.id).includes(chain.id) ? (
+            <div className="space-y-8">{children}</div>
+          ) : (
+            <CardHeader>
+              <CardTitle>To get started, connect a wallet</CardTitle>
+            </CardHeader>
+          )}
 
           <footer className="flex items-center justify-center px-4 py-2 mt-8 max-w-screen-xl mx-auto w-full flex-wrap">
             <p>
