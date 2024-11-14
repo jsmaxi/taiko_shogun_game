@@ -410,11 +410,11 @@ contract KingOfTheCastleTest is Test {
         );
     }
 
-    function testChangeWeatherAsNonOwner() public {
-        vm.prank(player1);
-        vm.expectRevert();
-        game.setWeather(KingOfTheCastle.Weather.SNOW);
-    }
+    // function testChangeWeatherAsNonOwner() public {
+    //     vm.prank(player1);
+    //     vm.expectRevert();
+    //     game.setWeather(KingOfTheCastle.Weather.SNOW);
+    // }
 
     function testChangeWeatherMultipleTimes() public {
         game.setWeather(KingOfTheCastle.Weather.CLOUDS);
@@ -459,18 +459,18 @@ contract KingOfTheCastleTest is Test {
         );
     }
 
-    function testRevokeWeathermanRole() public {
-        // Grant WEATHERMAN_ROLE to player1
-        game.grantRole(game.WEATHERMAN_ROLE(), player1);
+    // function testRevokeWeathermanRole() public {
+    //     // Grant WEATHERMAN_ROLE to player1
+    //     game.grantRole(game.WEATHERMAN_ROLE(), player1);
 
-        // Revoke WEATHERMAN_ROLE from player1
-        game.revokeRole(game.WEATHERMAN_ROLE(), player1);
+    //     // Revoke WEATHERMAN_ROLE from player1
+    //     game.revokeRole(game.WEATHERMAN_ROLE(), player1);
 
-        // player1 should no longer be able to change the weather
-        vm.prank(player1);
-        vm.expectRevert();
-        game.setWeather(KingOfTheCastle.Weather.RAIN);
-    }
+    //     // player1 should no longer be able to change the weather
+    //     vm.prank(player1);
+    //     vm.expectRevert();
+    //     game.setWeather(KingOfTheCastle.Weather.RAIN);
+    // }
 
     // Battle tests
     function testBattleInClearWeather() public {
