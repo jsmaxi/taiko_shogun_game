@@ -41,6 +41,7 @@ export function contractWriteFunction(abiFunction: string, functionArgs: any) {
       return { result, isPending, error: null };
     } catch (e: any) {
       console.error("Write error", e);
+      alert("Error: " + e);
       return { result: null, isPending, error: e };
     }
   };

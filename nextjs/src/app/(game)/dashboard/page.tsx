@@ -53,7 +53,6 @@ export default function Dashboard() {
   const [lastWeatherUpdateError, setLastWeatherUpdateError] = useState<string | null>(null);
 
   const { address } = useAccount();
-  const MULTIPLIER = 100;
 
   const { isFetching: isFetchingCastle, refetch: refetchCastle, error: errorCastle } = getCastleDetails();
   const { isFetching: isFetchingWeather, refetch: refetchWeather, error: errorWeather } = getCurrentWeather();
@@ -254,9 +253,7 @@ export default function Dashboard() {
                   <p className="text-base text-gray-400">Ranking Points</p>
                   <div className="flex items-center">
                     <Medal className="h-6 w-6 mr-2 text-orange-500" />
-                    <span className="text-2xl font-bold text-orange-500">
-                      {Number(playerState.points) * MULTIPLIER}
-                    </span>
+                    <span className="text-2xl font-bold text-orange-500">{Number(playerState.points)}</span>
                   </div>
                 </div>
                 <div>
