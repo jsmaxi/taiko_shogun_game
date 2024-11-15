@@ -54,10 +54,10 @@ export default function Dashboard() {
 
   const { address } = useAccount();
 
-  const { isFetching: isFetchingCastle, refetch: refetchCastle, error: errorCastle } = getCastleDetails();
-  const { isFetching: isFetchingWeather, refetch: refetchWeather, error: errorWeather } = getCurrentWeather();
-  const { isFetching: isFetchingTickTock, refetch: refetchTickTock, error: errorTickTock } = getLastTickTock();
-  const { isFetching: isFetchingPlayer, refetch: refetchPlayer, error: errorPlayer } = getPlayerDetails(address ?? "");
+  const { isFetching: isFetchingCastle, refetch: refetchCastle, error: errCastle } = getCastleDetails();
+  const { isFetching: isFetchingWeather, refetch: refetchWeather, error: errWeather } = getCurrentWeather();
+  const { isFetching: isFetchingTickTock, refetch: refetchTickTock, error: errTickTock } = getLastTickTock();
+  const { isFetching: isFetchingPlayer, refetch: refetchPlayer, error: errPlayer } = getPlayerDetails(address ?? "");
   const {
     isFetching: isFetchingWeatherLast,
     refetch: refetchWeatherLast,
@@ -80,6 +80,7 @@ export default function Dashboard() {
     };
 
     fetchCastleDetails();
+    console.log(isFetchingCastle, errCastle);
   }, []);
 
   useEffect(() => {
@@ -102,6 +103,7 @@ export default function Dashboard() {
     };
 
     fetchPlayerState();
+    console.log(isFetchingPlayer, errPlayer);
   }, [address]);
 
   useEffect(() => {
@@ -119,6 +121,7 @@ export default function Dashboard() {
     };
 
     fetchWeather();
+    console.log(isFetchingWeather, errWeather);
   }, []);
 
   useEffect(() => {
@@ -136,6 +139,7 @@ export default function Dashboard() {
     };
 
     fetchTickTock();
+    console.log(isFetchingTickTock, errTickTock);
   }, []);
 
   useEffect(() => {
@@ -153,6 +157,7 @@ export default function Dashboard() {
     };
 
     fetchLastWeatherChange();
+    console.log(isFetchingWeatherLast, errorWeatherLast);
   }, []);
 
   function weatherValueToString(weather: number) {

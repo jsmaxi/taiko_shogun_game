@@ -1,13 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import cover from "../../../../images/samurai_rank.png";
 import shogun from "../../../../images/shogun.png";
 
+interface PlayerRank {
+  name: string;
+  points: number;
+}
+
 export default function Rankings() {
-  const [playerRankings, setPlayerRankings] = useState<any>([]);
+  const [playerRankings, setPlayerRankings] = useState<PlayerRank[]>([]);
+
+  useEffect(() => {
+    setPlayerRankings([{ name: "Test", points: 100 }]);
+  }, []);
 
   return (
     <>
@@ -50,7 +59,7 @@ export default function Rankings() {
           <>
             <h3 className="text-2xl font-bold mb-4 text-indigo-400">Player Rankings</h3>
             <div className="space-y-4">
-              {playerRankings.map((player: any, index: number) => (
+              {playerRankings.map((player: PlayerRank, index: number) => (
                 <div key={index} className="flex justify-between items-center">
                   <div className="flex items-center">
                     <span className="text-lg font-semibold text-white mr-2">{index + 1}.</span>

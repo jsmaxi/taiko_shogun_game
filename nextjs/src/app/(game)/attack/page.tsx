@@ -39,14 +39,14 @@ export default function Attack() {
   const MAX_TROOPS = 2000;
   const { address } = useAccount();
 
-  const { isFetching: isFetchingPlayer, refetch: refetchPlayer, error: errorPlayer } = getPlayerDetails(address ?? "");
-  const { write: writeJoin, result: resultJoin, isPending: pendingJoin, error: errorJoin } = joinGame(generalName);
-  const { write: writeAttack, result: resultAttack, isPending: pendingAttack, error: errorAttack } = attackCastle();
+  const { isFetching: isFetchingPlayer, refetch: refetchPlayer, error: errPlayer } = getPlayerDetails(address ?? "");
+  const { write: writeJoin, result: resultJoin, isPending: pendingJoin, error: errJoin } = joinGame(generalName);
+  const { write: writeAttack, result: resultAttack, isPending: pendingAttack, error: errAttack } = attackCastle();
   const {
     write: writeMobilize,
     result: resultMobilize,
     isPending: pendingMobilize,
-    error: errorMobilize,
+    error: errMobilize,
   } = mobilizeArmy(archerCount, infantryCount, cavalryCount);
 
   useEffect(() => {
@@ -70,6 +70,7 @@ export default function Attack() {
     };
 
     fetchPlayerState();
+    console.log(isFetchingPlayer, errPlayer);
   }, [address, reload]);
 
   const handleJoinGame = async (e: any) => {
@@ -89,6 +90,7 @@ export default function Attack() {
     } catch (error: any) {
       console.log(`Failed to join the game: ${error}`);
     }
+    console.log(resultJoin, pendingJoin, errJoin);
   };
 
   const handleMobilizeArmy = async () => {
@@ -115,6 +117,7 @@ export default function Attack() {
     } catch (error: any) {
       console.log(`Failed to mobilize army: ${error.message}`);
     }
+    console.log(resultMobilize, pendingMobilize, errMobilize);
   };
 
   const handleAttack = async () => {
@@ -129,6 +132,7 @@ export default function Attack() {
     } catch (error: any) {
       console.log(`Failed to launch attack: ${error}`);
     }
+    console.log(resultAttack, pendingAttack, errAttack);
   };
 
   if (loadingPlayerState) return <div>Loading player state...</div>;

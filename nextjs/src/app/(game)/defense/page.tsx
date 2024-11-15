@@ -35,7 +35,7 @@ export default function Defense() {
   const MAX_TROOPS = 2000;
   const { address } = useAccount();
 
-  const { isFetching: isFetchingCastle, refetch: refetchCastle, error: errorCastle } = getCastleDetails();
+  const { isFetching: isFetchingCastle, refetch: refetchCastle, error: errCastle } = getCastleDetails();
   const {
     write: writeDef,
     result: resultDef,
@@ -60,6 +60,7 @@ export default function Defense() {
     };
 
     fetchCastleDetails();
+    console.log(isFetchingCastle, errCastle);
   }, [reload]);
 
   const handleDefend = async () => {
@@ -86,6 +87,8 @@ export default function Defense() {
     } catch (error: any) {
       console.error(`Failed to change defense army: ${error.message}`);
     }
+
+    console.log(resultDef, pendingDef, errorDef);
   };
 
   if (loadingCastleDetails) return <div>Loading castle details...</div>;
