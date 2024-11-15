@@ -1,4 +1,7 @@
-export const contractAddress = "0xA70904c7A115989E543a33a11d34B6EC74B965e7";
+export const sepoliaContractAddress = process.env.NEXT_PUBLIC_SEPOLIA_CONTRACT_ADDRESS || "";
+export const holeskyContractAddress = process.env.NEXT_PUBLIC_HOLESKY_CONTRACT_ADDRESS || "";
+export const taikoHeklaContractAddress = process.env.NEXT_PUBLIC_TAIKO_HEKLA_CONTRACT_ADDRESS || "";
+export const taikoMainContractAddress = process.env.NEXT_PUBLIC_TAIKO_MAIN_CONTRACT_ADDRESS || "";
 
 export const contractAbi = [
 	{

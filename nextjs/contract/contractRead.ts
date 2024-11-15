@@ -1,19 +1,19 @@
 "use client";
 
-import { contractAddress, contractAbi } from "./ABI";
+import { contractAbi } from "./ABI";
+import { resolveNetworkContract } from "./resolveNetworkContract";
 import { Address } from "viem";
-import { useReadContract } from "wagmi";
-import { useTargetNetwork } from "../hooks/useTargetNetwork";
+import { useReadContract, useAccount } from "wagmi";
 
 export function contractReadFunction (abiFunction : string, functionArgs : any) {
-  const { targetNetwork } = useTargetNetwork();
-  
+  const { chain } = useAccount();
+
   const { isFetching, refetch, error } = useReadContract({
-    address: contractAddress as Address,
+    address: resolveNetworkContract(chain?.id ?? -1) as Address,
     functionName: abiFunction,
     abi: contractAbi,
     args: functionArgs,
-    chainId: targetNetwork.id,
+    chainId: chain?.id,
     query: {
       enabled: false,
       retry: false,

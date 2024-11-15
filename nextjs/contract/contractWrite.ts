@@ -1,21 +1,15 @@
 "use client";
 
-import { contractAddress, contractAbi } from "./ABI";
+import { contractAbi } from "./ABI";
+import { resolveNetworkContract } from "./resolveNetworkContract";
 import { waitForTransactionReceipt } from "viem/actions";
-import { useClient, useWriteContract } from "wagmi";
-import { useTargetNetwork } from "../hooks/useTargetNetwork";
-import { useState, useEffect } from "react";
+import { useClient, useWriteContract, useAccount } from "wagmi";
 import { Address } from "viem";
 
 export function contractWriteFunction(abiFunction: string, functionArgs: any) {
-  const [chain, setChain] = useState<number | undefined>(undefined);
-  const { targetNetwork } = useTargetNetwork();
+  const { chain } = useAccount();
   const { data: result, isPending, writeContractAsync } = useWriteContract();
   const client = useClient();
-
-  useEffect(() => {
-    setChain(targetNetwork?.id);
-  }, [targetNetwork]);
 
   const write = async () => {
     if (!writeContractAsync) {
@@ -24,11 +18,11 @@ export function contractWriteFunction(abiFunction: string, functionArgs: any) {
 
     try {
       const hash = await writeContractAsync({
-        address: contractAddress as Address,
+        address: resolveNetworkContract(chain?.id ?? -1) as Address,
         functionName: abiFunction,
         abi: contractAbi,
         args: functionArgs,
-        chainId: chain
+        chainId: chain?.id
       });
 
       if (client) {
