@@ -60,7 +60,10 @@ export default function Wallet() {
             Taiko Explorer:{" "}
             <strong>
               <Link href={"https://taikoscan.io/address/" + address} target="_blank">
-                Link
+                Mainnet
+              </Link>{" "}
+              <Link href={"https://hekla.taikoscan.io/address/" + address} target="_blank">
+                Testnet
               </Link>
             </strong>
           </p>

@@ -8,7 +8,7 @@ export type WalletConfig = {
 
 const walletConfig = {
   // The networks on which the DApp is live
-  targetNetworks: [chains.sepolia],
+  targetNetworks: [chains.sepolia, chains.taikoHekla],
 
   // This is ours WalletConnect's default project ID.
   // You can get your own at https://cloud.walletconnect.com
