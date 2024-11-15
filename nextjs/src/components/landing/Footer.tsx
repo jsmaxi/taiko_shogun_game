@@ -12,7 +12,7 @@ export default function Footer() {
           </Link>
           <Link
             className="text-xs hover:underline underline-offset-4 text-gray-200"
-            href="https://github.com/"
+            href="https://github.com/jsmaxi/taiko_shogun_game"
             target="_blank"
           >
             GitHub

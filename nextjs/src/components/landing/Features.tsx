@@ -32,13 +32,18 @@ export default function Features() {
         </div>
       </div>
       <div className="mt-8 mb-8">
-        <Link href="" target="_blank" className="mx-8 mt-4 mb-4 inline-block">
+        <Link href="https://bridge.hekla.taiko.xyz/faucet" target="_blank" className="mx-8 mt-4 mb-4 inline-block">
           <Button className="bg-orange-500 hover:bg-gray-500 focus-visible:outline-orange-500 p-6 round-btn">
             <p>FAUCET</p>
             <Coins className="ml-2 h-4 w-4" />
           </Button>
         </Link>
-        <Link href="" passHref target="_blank" className="mx-8 mt-4 mb-4 inline-block">
+        <Link
+          href="https://jsmaxi.gitbook.io/shogun-taiko"
+          passHref
+          target="_blank"
+          className="mx-8 mt-4 mb-4 inline-block"
+        >
           <Button className="bg-green-600 hover:bg-gray-500 focus-visible:outline-green-600 p-6 round-btn">
             <p>DOCS</p>
             <HelpCircle className="ml-2 h-4 w-4" />

@@ -104,7 +104,7 @@ export default function Gameplay({ children }: { children: ReactNode }) {
               </li>
             </ul>
           </nav>
-          <Link className="social-link absolute" href="https://github.com/" target="_blank">
+          <Link className="social-link absolute" href="https://github.com/jsmaxi/taiko_shogun_game" target="_blank">
             <Github className="text-gray-400 hover:text-white" />
           </Link>
         </aside>
