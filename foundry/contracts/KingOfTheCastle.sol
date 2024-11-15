@@ -126,7 +126,10 @@ contract KingOfTheCastle is AccessControl {
         uint256 cavalry
     ) external {
         Player storage player = gameState.players[msg.sender];
-        require(player.turns > 0, "Player has not joined the game");
+        require(
+            player.turns > 0,
+            "Player has not joined the game or run out of turns"
+        );
         require(
             player.turns >= Consts.TURNS_NEEDED_FOR_MOBILIZE,
             "Not enough turns"
@@ -156,7 +159,10 @@ contract KingOfTheCastle is AccessControl {
 
     function attack() external {
         Player storage attacker = gameState.players[msg.sender];
-        require(attacker.turns > 0, "Attacker has not joined the game");
+        require(
+            attacker.turns > 0,
+            "Attacker has not joined the game or run out of turns"
+        );
         require(
             msg.sender != gameState.castle.currentKing,
             "Current king cannot attack"

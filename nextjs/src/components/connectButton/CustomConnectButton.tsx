@@ -48,7 +48,7 @@ export const CustomConnectButton = () => {
                 <>
                   <div className="flex flex-col items-center mr-1">
                     <div />
-                    <span className="text-xs">{chain.name}</span>
+                    <span className="text-xs text-gray-200">{chain.name}</span>
                   </div>
                   <AddressInfoDropdown
                     address={account.address as Address}
