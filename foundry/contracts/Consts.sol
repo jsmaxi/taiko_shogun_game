@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 library Consts {
-    // basic game constants
+    // Basic game constants
     uint256 constant INITIAL_ARMY_SIZE = 500;
     uint256 constant INITIAL_POINTS = 0;
     uint256 constant INITIAL_TURNS = 10;

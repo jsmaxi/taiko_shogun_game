@@ -38,6 +38,7 @@ contract KingOfTheCastle is AccessControl {
         uint256 numberOfAttacks;
         Castle castle;
         Weather currentWeather;
+        uint256 lastWeatherChangedAt;
     }
 
     GameState public gameState;
@@ -82,6 +83,7 @@ contract KingOfTheCastle is AccessControl {
         gameState.castle.currentKing = owner;
         gameState.castle.lastKingChangedAt = block.timestamp;
         gameState.currentWeather = Weather.CLEAR;
+        gameState.lastWeatherChangedAt = block.timestamp;
 
         // Initialize the owner as the first player
         gameState.players[owner] = Player(
@@ -142,11 +144,13 @@ contract KingOfTheCastle is AccessControl {
 
     // function setWeather(Weather newWeather) external onlyRole(WEATHERMAN_ROLE) {
     //     gameState.currentWeather = newWeather;
+    //     gameState.lastWeatherChangedAt = block.timestamp;
     //     emit WeatherChanged(newWeather);
     // }
 
     function setWeather(Weather newWeather) external {
         gameState.currentWeather = newWeather;
+        gameState.lastWeatherChangedAt = block.timestamp;
         emit WeatherChanged(newWeather);
     }
 
@@ -261,6 +265,10 @@ contract KingOfTheCastle is AccessControl {
 
     function getCurrentWeather() public view returns (Weather) {
         return gameState.currentWeather;
+    }
+
+    function getLastWeatherChangedAt() public view returns (uint256) {
+        return gameState.lastWeatherChangedAt;
     }
 
     // Internal functions for the game
