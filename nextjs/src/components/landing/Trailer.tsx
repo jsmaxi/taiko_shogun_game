@@ -30,7 +30,11 @@ export default function Trailer() {
               cavalry charges but strengthens infantry, while clear skies provide a bonus to cavalry, enhancing their
               effectiveness in battle.
             </p>
-            <Link href="/" target="_blank" className="mx-auto mt-4 mb-4">
+            <Link
+              href="https://github.com/jsmaxi/taiko_shogun_game/blob/main/presentation.pdf"
+              target="_blank"
+              className="mx-auto mt-4 mb-4"
+            >
               <Button className="bg-indigo-500 hover:bg-gray-500 focus-visible:outline-indigo-600 p-2">
                 <p>WATCH TRAILER</p>
                 <Clapperboard className="ml-2 h-4 w-4" />
