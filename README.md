@@ -4,6 +4,7 @@
 
 ## Project Links
 
+- **Pitch Video**: https://www.loom.com/share/f9427d8a8412426b95a158be21bf2a9e?sid=059238a6-5f01-4cf9-9010-2329f553c42d 
 - **Main Repository**: [Github](https://github.com/jsmaxi/taiko_shogun_game)
 - **Website**: [https://taiko-shogun-game.vercel.app/](https://taiko-shogun-game.vercel.app/)
 - **Presentation**: [Slides PDF](./presentation.pdf)
